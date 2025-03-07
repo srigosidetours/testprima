@@ -1,0 +1,70 @@
+---
+const test = "test";
+import BaseHead from "../components/BaseHead.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import PreactTestComponent from "../components/PreactTestComponent.jsx";
+
+import GlobeBackground from "../components/GlobeBackground.astro";
+import GlobeBackground2 from '../components/GlobeBackground2.astro';
+//import GlobeBackgroundComponent from "../components/GlobeBackgroundComponent.jsx";
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+         <GlobeBackground></GlobeBackground>
+   
+
+
+        <PreactTestComponent client:load />
+        <hr />
+        <!-- Layout móvil: una columna -->
+        <div class="grid grid-cols-1 gap-4 p-4">
+            <header class="bg-blue-200 p-4">
+                Header {test}
+            </header>
+            <nav class="bg-green-200 p-4">Navegación</nav>
+            <article class="bg-gray-200 p-4">Artículo</article>
+            <aside class="bg-pink-200 p-4">Aside</aside>
+            <footer class="bg-red-200 p-4">Footer</footer>
+        </div>
+
+        <hr />
+
+        <div
+            class="grid grid-cols-1 md:grid-cols-5 md:grid-rows-[auto,1fr,auto] gap-4 p-4"
+        >
+            <!-- En pantallas md o superiores, el header ocupará las columnas 2 y 3 de la primera fila -->
+            <header class="md:col-start-2 md:col-end-6 bg-blue-200 p-4">
+                Header
+            </header>
+
+            <!-- El nav se ubicará en la primera columna y se extenderá por dos filas -->
+            <nav class="md:row-span-3 md:row-start-1 bg-green-200 p-4">
+                Navegación
+            </nav>
+
+            <!-- Article se coloca en la segunda fila, columna 2 -->
+            <article class="md:col-start-2 md:col-end-5 bg-gray-200 p-4">
+                Artículo
+            </article>
+
+            <!-- Aside se coloca en la segunda fila, columna 3 -->
+            <aside class="md:col-start-5 md:col-end-6 bg-pink-200 p-4">
+                Aside
+            </aside>
+
+            <!-- Footer se coloca en la tercera fila, abarcando columnas 2 y 3 -->
+            <footer class="md:col-start-2 md:col-end-6 bg-red-200 p-4">
+                Footer
+            </footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+---
+---
+
+<div id="wrapper" style="position: relative; overflow: hidden; height: 100vh;">
+  <div 
+    id="containez"
+    class="font-mono text-[clamp(10px,2.80vw,24px)] text-center"
+  ></div>
+</div>
+
+<script is:inline>
+  eval(
+    (z =
+      'p="<"+"pre>";for(y in n="zw24l6k\
+4e3t4jnt4qj24xh2 x42kty24wrt413n243n\
+9h243pdxt41csb yz43iyb6k43pk7243nm\
+r24".split(4)){for(a in t=parseInt(n[y],36)+(e=x=r=[]))for(r=!r,i=0;t[a]>i;i+=.05)with(Math)x-=.05,0<cos(o=new Date/1e3-x/PI)&&(e[~~(32*sin(o)*sin(.5+y/7))+60]=-~r);for(x=0;122>x;)p+="   *#"[e[x++]+e[x++]]||(S=("eval"+"(z=\'"+z.split(B="\\\\").join(B+B).split(Q="\'").join(B+Q)+Q+")//m1k")[x/2+61*y-1]).fontcolor(/\\w/.test(S)&&"#00ff88");document.getElementById("containez").innerHTML=p+=B+"\\n"}setTimeout(z)')
+  );
+
+  // Overlay texto mejorado
+  const overlay = document.createElement("div");
+  overlay.textContent = "BIENVENIDO";
+  Object.assign(overlay.style, {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    zIndex: "9999",
+    color: "#00ffff",
+    fontFamily: "monospace",
+    fontSize: "clamp(16px,4vw,36px)",
+    textAlign: "center",
+    textShadow: "0 0 10px #00ffff, 0 0 20px #ff00ff, 0 0 30px #00ffff",
+    padding: "12px 24px",
+    background: "linear-gradient(135deg, rgba(0,0,0,0.8), rgba(20,20,20,0.6))",
+    borderRadius: "8px",
+    backdropFilter: "blur(5px)",
+    animation: "pulseGlow 2s infinite alternate",
+  });
+  document.getElementById("wrapper").appendChild(overlay);
+
+  // Imagen SVG mejorada con efecto neón
+  const vectorImage = document.createElement("img");
+  vectorImage.src = "https://www.svgrepo.com/show/508465/flag-ceu.svg";
+  vectorImage.alt = "Imagen vectorial";
+  Object.assign(vectorImage.style, {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    zIndex: "5000",
+    width: "30vw",
+    maxWidth: "200px",
+    height: "auto",
+    filter: "drop-shadow(0 0 15px #00ffff)",
+    animation: "float 3s ease-in-out infinite alternate",
+  });
+  document.getElementById("wrapper").appendChild(vectorImage);
+</script>
+
+<style>
+#wrapper {
+  background: radial-gradient(circle at top, #020617, #111827);
+}
+
+#containez {
+  height: 100%;
+  overflow: hidden;
+  padding: 1rem;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, rgba(2,132,199,0.2), rgba(0,0,0,0.8));
+  color: #00ff88;
+  text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88;
+  filter: blur(1px);
+}
+
+@keyframes pulseGlow {
+  from { 
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff, 0 0 30px #00ffff;
+  }
+  to {
+    text-shadow: 0 0 20px #ff00ff, 0 0 30px #00ffff, 0 0 50px #ff00ff;
+  }
+}
+
+@keyframes float {
+  from { transform: translate(-50%, -50%) translateY(0); }
+  to { transform: translate(-50%, -50%) translateY(10px); }
+}
+</style>
