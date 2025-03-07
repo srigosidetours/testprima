@@ -1,15 +1,17 @@
 ---
 // GlobeBackgroundCyber.astro
+const { mensaje = 'Bienvenido' } = Astro.props;
 ---
 
 <div
+  data-mensaje={mensaje}
   id="cyberContainer"
-  class="bg-gradient-to-r from-blue-500 to-purple-600 animate-gradient bg-[length:400%_400%] relative"
+  class="bg-gradient-to-r from-blue-500 to-purple-600 via-transparent via-blue-700 animate-gradient bg-[length:400%_400%] relative"
 >
   <div
     id="cyberGlobe"
     class="p-1 inset-0 bg-transparent z-0 font-mono text-[clamp(10px,2.80vw,24px)] leading-none text-purple-400 text-center overflow-hidden"
-    style="filter: blur(3px);"
+    style="filter: blur(0px);"
   >
   </div>
 </div>
@@ -28,9 +30,26 @@
   }
 
   .animate-gradient {
-    animation: gradientAnimation 10s ease infinite; 
+    animation: gradientAnimation 20s ease infinite;
+  }
+
+  @keyframes pulseDiagonal {
+    0% {
+      transform: translate(-50%, -50%) rotate(-10deg) scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(-50%, -50%) rotate(-10deg) scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(-10deg) scale(1);
+      opacity: 1;
+    }
   }
 </style>
+
+
 
 <script is:inline>
   // Código del globo animado (se mantiene sin cambios)
@@ -54,24 +73,26 @@ it(B = "\\\\")./*           G####B" #       */join(B+B).split\
 03B");document.getElementById("cyberGlobe").innerHTML=p+=B+"\\n"}setTimeout(z)'),
   );
 
-  // overlay2 de bienvenida con un toque cyberpunk
+  // overlay2 de bienvenida con efecto pulsante y diagonal
+
+  //miro la prop
+  let msg = document.querySelector(`#cyberContainer`).dataset.mensaje;
+
   const overlay2 = document.createElement("div");
-  overlay2.textContent = "BIENVENIDO";
+  overlay2.innerHTML = msg;
+  overlay2.id = "cyberOverlay2";
   Object.assign(overlay2.style, {
     position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
+    top: "20%",
+    left: "20%",
+    transform: "translate(-50%, -50%) rotate(-10deg)",
     zIndex: "9999", // Queda sobre el resto
-    color: "#ff00ff", // Neon magenta
-    fontFamily: "monospace",
+    color: "#FFF", 
+    fontFamily: "monospace, sans-serif",
     fontSize: "clamp(12px,3vw,28px)",
     textAlign: "center",
-    textShadow: "0 0 12px #ff00ff, 0 0 24px #ff00ff, 0 0 36px #ff00ff",
     padding: "12px 24px",
-    background: "linear-gradient(135deg, rgba(0,0,0,0.7), rgba(50,0,80,0.7))",
-    borderRadius: "12px",
-    border: "2px solid #ff00ff",
+    animation: "pulseDiagonal 10s ease-in-out infinite",
   });
   document.getElementById("cyberContainer").appendChild(overlay2);
 
@@ -88,7 +109,7 @@ it(B = "\\\\")./*           G####B" #       */join(B+B).split\
     width: "30vw", // Responsivo
     height: "auto",
     maxWidth: "100%",
-    filter: "drop-shadow(0 0 15px #ff00ff)",
+    filter: "drop-shadow(0 0 15px #ff00ff50)",
   });
   document.getElementById("cyberContainer").appendChild(vectorImage2);
 </script>
