@@ -1,0 +1,50 @@
+name: Mi app 🐾
+entities:
+  Owner:
+    properties:
+      - name
+      - { name: birthdate, type: date }
+
+  Cat:
+    properties:
+      - name
+      - { name: age, type: number }
+      - { name: birthdate, type: date }
+    belongsTo:
+      - Owner
+
+  Homepage:
+    nameSingular: Home content
+    single: true
+    properties:
+      - title
+      - { name: description, type: richText }
+      - { name: cover, type: image }
+
+  User:
+    authenticable: true # Makes entity authenticable.
+    properties:
+      - username
+      - email
+      - password_hash
+
+  Category:
+    properties:
+      - name
+
+  List:
+    properties:
+      - name
+    belongsTo:
+      - User
+
+  Task:
+    properties:
+      - title
+      - description
+      - { name: due_date, type: date }
+      - { name: priority, type: number }
+      - { name: completed, type: boolean }
+    belongsTo:
+      - { name: list_id, entity: List}
+      - { name: category_id, entity: Category}

@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "manifest": "node node_modules/manifest/scripts/watch/watch.js",
+    "manifest:seed": "node node_modules/manifest/dist/manifest/src/seed/scripts/seed.js"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.1.0",
@@ -16,7 +18,8 @@
     "@tailwindcss/vite": "^4.0.9",
     "astro": "^5.4.0",
     "preact": "^10.26.4",
-    "tailwindcss": "^4.0.9"
+    "tailwindcss": "^4.0.9",
+    "manifest": "^4.11.1"
   },
   "devDependencies": {
     "daisyui": "^5.0.0"

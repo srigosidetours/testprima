@@ -4,22 +4,24 @@ import BaseHead from "../components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import PreactTestComponent from "../components/PreactTestComponent.jsx";
 
+
 import GlobeBackground from "../components/GlobeBackground.astro";
 import GlobeBackground2 from "../components/GlobeBackground2.astro";
+const x = 'dasfd';
 ---
 
 <!doctype html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    </head>
-    <body>
-         <GlobeBackground></GlobeBackground>
-         <GlobeBackground2 mensaje="Hola Mundo<br>fsfdf"></GlobeBackground2>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+</head>
+<body>
+    <html lang="es"> {x} 
+    <GlobeBackground></GlobeBackground>
+    <GlobeBackground2 mensaje="Hola Mundo<br>fsfdf"></GlobeBackground2>
    
 
 
