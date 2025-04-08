@@ -15,11 +15,12 @@
     "@astrojs/preact": "^4.0.5",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
+    "@mnfst/sdk": "^1.2.0",
     "@tailwindcss/vite": "^4.0.9",
     "astro": "^5.4.0",
+    "manifest": "^4.11.1",
     "preact": "^10.26.4",
-    "tailwindcss": "^4.0.9",
-    "manifest": "^4.11.1"
+    "tailwindcss": "^4.0.9"
   },
   "devDependencies": {
     "daisyui": "^5.0.0"
