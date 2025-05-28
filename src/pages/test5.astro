@@ -1,0 +1,122 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
+// Tus componentes de Preact/React/Vue/Svelte, etc.
+import XunoComponent from "../components/XunoComponent";
+import XdosComponent from "../components/XdosComponent";
+// const x = "a"; // Esta variable no se usa, podrías eliminarla
+---
+
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={SITE_DESCRIPTION} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <title>{SITE_TITLE}</title>
+    <style>
+      /* Estilo opcional para que 'hidden' funcione si no usas Tailwind */
+      /* .hidden { display: none; } */
+    </style>
+</head>
+<body>
+    <Header />
+    <main class="m-5">
+        <div class="grid grid-cols-5 grid-rows-5 gap-4">
+            <div class="row-span-5"> {/* Columna de botones */}
+                <button
+                    data-name="tab-btn"
+                    data-btn="uno"
+                    class="btn btn-wide mb-4 btn-primary active">
+                    Uno
+                </button>
+                <button
+                    data-name="tab-btn"
+                    data-btn="dos"
+                    class="btn btn-wide mb-4 btn-secondary">
+                    Dos
+                </button>
+                <button
+                    data-name="tab-btn"
+                    data-btn="tres"
+                    class="btn btn-wide mb-4 btn-secondary">
+                    Tres
+                </button>
+                <button
+                    data-name="tab-btn"
+                    data-btn="cuatro"
+                    class="btn btn-wide mb-4 btn-secondary">
+                    Cuatro
+                </button>
+            </div>
+
+            {/* Contenedores de las pestañas */}
+            <div
+                data-name="tab-content"
+                data-tab="uno"
+                class="col-span-4 row-span-5">
+                {/* Cambiado a client:visible */}
+                <XunoComponent client:visible />
+            </div>
+            <div
+                data-name="tab-content"
+                data-tab="dos"
+                class="col-span-4 row-span-5 hidden">
+                {/* Cambiado a client:visible */}
+                <XdosComponent client:visible />
+            </div>
+            <div
+                data-name="tab-content"
+                data-tab="tres"
+                class="col-span-4 row-span-5 hidden">
+                Contenido de la pestaña Tres
+            </div>
+            <div
+                data-name="tab-content"
+                data-tab="cuatro"
+                class="col-span-4 row-span-5 hidden">
+                Contenido de la pestaña Cuatro
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const tabButtons = document.querySelectorAll('[data-name="tab-btn"]');
+        const contentPanels = document.querySelectorAll('[data-name="tab-content"]');
+
+        tabButtons.forEach(button => {
+            button.addEventListener("click", (e) => {
+                const clickedButton = e.currentTarget;
+                const targetTab = clickedButton.dataset.btn;
+
+                // Ocultar todos los paneles de contenido
+                contentPanels.forEach(panel => {
+                    panel.classList.add("hidden");
+                });
+
+                // Desactivar todos los botones
+                tabButtons.forEach(btn => {
+                    btn.classList.remove("btn-primary", "active");
+                    btn.classList.add("btn-secondary");
+                });
+
+                // Mostrar el panel de contenido objetivo
+                const targetPanel = document.querySelector(
+                    `[data-tab="${targetTab}"]`
+                );
+                if (targetPanel) {
+                    targetPanel.classList.remove("hidden");
+                }
+
+                // Activar el botón clickeado
+                clickedButton.classList.remove("btn-secondary");
+                clickedButton.classList.add("btn-primary", "active");
+            });
+        });
+    </script>
+</body>
+</html>
