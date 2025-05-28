@@ -1,0 +1,70 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
+import ItsFridayComponent from "../components/itsFridayComponent.jsx";
+
+---
+
+<!doctype html>
+<html lang="en" data-theme="cyberpunk">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <style>
+            @keyframes diagonalScrollSmooth {
+                0% {
+                    background-position: 0 0;
+                }
+                100% {
+                    background-position: 100px 100px; /* Exactamente el tamaño del patrón */
+                }
+            }
+
+            .animate-diagonal {
+                animation: diagonalScrollSmooth 2s linear infinite;
+                background-size: 100px 100px;
+            }
+        </style>
+        <Header />
+        <main style="margin:30px;">
+            <ItsFridayComponent client:load />
+            <div class="relative overflow-hidden h-screen">
+                <!-- Fondo animado -->
+                <div
+                    class="absolute inset-0 bg-repeat opacity-50 z-0 animate-diagonal bg-[url(/img/pattern.svg)] bg-[length:100px_100px] mb-10"
+                >
+                </div>
+
+                <!-- Contenido encima -->
+                <div class="relative z-10 p-8">
+                    <h1 class="text-3xl font-bold">Bienvenido</h1>
+                    <p>Esto tiene un fondo ✨</p>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 w-50 shadow-sm">
+                <figure class="aspect-1/1 overflow-hidden">
+                    <img
+                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                        alt="Shoes"
+                        class="object-cover w-full h-full"
+                    />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">Card Title</h2>
+                    <p class="line-clamp-2 [text-wrap:balance]">
+                        A card component has a figure, a body part, and inside
+                        body there are. A card component has a figure, a body
+                        part, and inside body there are.
+                    </p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
